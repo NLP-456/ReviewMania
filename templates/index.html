@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Review Mania</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
 
@@ -23,22 +23,28 @@
 
     <!-- The nav menu -->
     <nav class="nav">
-        <a class="nav-item" href="http://acw86.pythonanywhere.com/index">Home</a>
-        <a class="nav-item" href="http://acw86.pythonanywhere.com/about">About</a>
+        <a class="nav-item" href="#">Home</a>
+        <a class="nav-item" href="/about">About</a>
     </nav>
 
     <!-- Just dummy content like in the animated gif -->
     <section class="dummy-content">
         <div class="circle">
-            <img src="logo.jpg"/>
+            <img src="../static/logo.jpg"/>
         </div>
         <div class="square-behind"></div>
-        <img src="summary.jpg"/>
+        <img src="../static/summary.jpg"/>
     </section>
-        <div class="textarea">
-        <textarea class="form-control" rows="18" cols="70"></textarea>
-        <button type="button">Submit</button>
-    </div>
+
+    <form method="POST" action="/submit">
+        <input type="text" name="hotelUrl" >
+        <input type="submit">
+    </form>
+
+{#    <div class="textarea">#}
+{#        <textarea class="form-control" rows="18" cols="70"></textarea>#}
+{#        <button type="button">Submit</button>#}
+{#    </div>#}
 
 </div>
 
