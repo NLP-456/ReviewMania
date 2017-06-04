@@ -13,34 +13,6 @@ def index():
     return render_template('index.html')
 
 
-# @app.route('/home/')
-# def home():
-#     driver = webdriver.Chrome('/Users/Adam/Downloads/chromedriver')
-#     driver.get('https://www.tripadvisor.com/Hotel_Review-g60878-d100507-Reviews-Inn_at_the_Market-Seattle_Washington.html#REVIEWS')
-#     time.sleep(5)
-#
-#     # xPath to all More elemets.
-#     more = driver.find_elements_by_xpath("//*[text() = 'More']")
-#
-#     for x in range(0, len(more)):
-#         #expands the reviews if they are expandable.
-#         # if the_more_buttons[x].is_displayed():
-#         try:
-#             more[x].click()
-#         except WebDriverException:
-#             print "Element is not clickable"
-#
-#     r = driver.page_source
-#     soup = BeautifulSoup(r, "lxml")
-#     letters = soup.find_all("p", class_="partial_entry")
-#
-#     output = " "
-#     for letter in letters:
-#         output += letter.get_text() + " "
-#         print letter.get_text()
-#
-#     return output
-
 @app.route('/output/')
 def output():
     return render_template('output.html')
@@ -78,7 +50,6 @@ def submit():
             output.append(letter.get_text())
             print letter.get_text()
         return render_template('output.html', reviews=output)
-        # return str(output)
 
 # for testing static files
 # @app.route('/<string:page_name>/')
