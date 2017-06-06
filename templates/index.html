@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Review Mania</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
 
@@ -24,7 +24,7 @@
     <!-- The nav menu -->
     <nav class="nav">
         <a class="nav-item" href="#">Home</a>
-        <a class="nav-item" href="../about/">About</a>
+        <a class="nav-item" href="/about">About</a>
     </nav>
 
     <!-- Just dummy content like in the animated gif -->
@@ -35,9 +35,16 @@
         <div class="square-behind"></div>
         <img src="../static/summary.jpg"/>
     </section>
-        <div class="textarea">
-        <textarea class="form-control" rows="18" cols="70"></textarea>
-    </div>
+
+    <form method="POST" action="/submit">
+        <input type="text" name="hotelUrl" >
+        <input type="submit">
+    </form>
+
+{#    <div class="textarea">#}
+{#        <textarea class="form-control" rows="18" cols="70"></textarea>#}
+{#        <button type="button">Submit</button>#}
+{#    </div>#}
 
 </div>
 

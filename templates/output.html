@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" style="overflow:scroll">
     <!-- This checkbox will give us the toggle behavior, it will be hidden, but functional -->
     <input id="toggle" type="checkbox">
 
@@ -24,7 +24,7 @@
     <!-- The nav menu -->
     <nav class="nav">
         <a class="nav-item" href="/">Home</a>
-        <a class="nav-item" href="#">About</a>
+        <a class="nav-item" href="/about">About</a>
     </nav>
 
     <!-- Just dummy content like in the animated gif -->
@@ -33,14 +33,15 @@
             <img src="../static/logo.jpg"/>
         </div>
         <div class="square-behind"></div>
-        <div class= "break" />
-        <img src="../static/aboutus.jpg"/>
+        <img src="../static/hotel.png"/>
     </section>
-    </div>
-
+    <list>
+        {% for review_text in reviews %}
+            <li>{{review_text}}</li>
+            <br>
+        {% endfor %}
+    </list>
 </div>
 
 </body>
 </html>
-
-
