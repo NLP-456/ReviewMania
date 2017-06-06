@@ -3,7 +3,9 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
 from selenium.common.exceptions import WebDriverException
-
+import pickle
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
 
 app = Flask(__name__)
 
@@ -49,6 +51,16 @@ def submit():
         for letter in letters:
             output.append(letter.get_text())
             print letter.get_text()
+
+        #TODO: Take the list of reviews -- letters -- and run them through training code.
+        #TODO: Return a list of text as the results for the user.
+
+        # filename = '/Users/Adam/PycharmProjects/ReviewMania/RandomForest_model.sav'
+        #
+        # loaded_model = pickle.load(open(filename, 'rb'))
+        # result = loaded_model.predict(output)
+        # print(result)
+
         return render_template('output.html', reviews=output)
 
 # for testing static files
