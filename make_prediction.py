@@ -7,7 +7,7 @@ from sklearn.preprocessing import Normalizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 filename = 'RandomForest_model.sav'
 saved_vectorizer = 'vectorizer.pk'
-
+saved_lsa = 'lsa.pk'
 # load the model from disk
 loaded_model = pickle.load(open(filename, 'rb'))
 loaded_lsa = pickle.load(open(saved_lsa, 'rb'))

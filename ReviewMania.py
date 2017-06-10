@@ -60,11 +60,23 @@ def submit():
 
         loaded_model = pickle.load(open(filename, 'rb'))
 
-        result = loaded_model.predict(output)
+        saved_vectorizer = '/Users/Adam/PycharmProjects/ReviewMania/vectorizer.pk'
+        saved_lsa = '/Users/Adam/PycharmProjects/ReviewMania/lsa.pk'
+
+        # load the model from disk
+        loaded_model = pickle.load(open(filename, 'rb'))
+        loaded_lsa = pickle.load(open(saved_lsa, 'rb'))
+        loaded_vectorizer = pickle.load(open(saved_vectorizer, 'rb'))
+        test1_transformed = loaded_vectorizer.transform(output)
+        test1_lsa = loaded_lsa.transform(test1_transformed)
+        result = loaded_model.predict(test1_lsa)
+
+        # result = loaded_model.predict(output)
         print(result)
 
         return render_template('output.html', reviews=output)
 
+# Static file rendering.
 # for testing static files
 # @app.route('/<string:page_name>/')
 # def static_page(page_name):
@@ -72,24 +84,3 @@ def submit():
 
 if __name__ == '__main__':
     app.run()
-
-
-# REVERSE_MAPPING={}
-# for key,val in MAPPING.items():
-#     REVERSE_MAPPING[val]=key
-#
-#
-# class Python_3_Unpickler(pickle.Unpickler):
-#     """Class for pickling objects from Python 3"""
-#     def find_class(self,module,name):
-#         if module in REVERSE_MAPPING:
-#             module=REVERSE_MAPPING[module]
-#         __import__(module)
-#         mod = sys.modules[module]
-#         klass = getattr(mod, name)
-#         return klass
-#
-#
-# def loads(str):
-#     file = pickle.StringIO(str)
-#     return Python_3_Unpickler(file).load()
