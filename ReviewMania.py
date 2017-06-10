@@ -6,6 +6,7 @@ from selenium.common.exceptions import WebDriverException
 import pickle
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
+# from lib2to3.fixes.fix_imports import MAPPING
 
 app = Flask(__name__)
 
@@ -42,7 +43,7 @@ def submit():
             try:
                 more[x].click()
             except WebDriverException:
-                print "Element is not clickable"
+                print("Element is not clickable")
 
         r = driver.page_source
         soup = BeautifulSoup(r, "lxml")
@@ -50,16 +51,17 @@ def submit():
 
         for letter in letters:
             output.append(letter.get_text())
-            print letter.get_text()
+            print(letter.get_text())
 
         #TODO: Take the list of reviews -- letters -- and run them through training code.
         #TODO: Return a list of text as the results for the user.
 
-        # filename = '/Users/Adam/PycharmProjects/ReviewMania/RandomForest_model.sav'
-        #
-        # loaded_model = pickle.load(open(filename, 'rb'))
-        # result = loaded_model.predict(output)
-        # print(result)
+        filename = '/Users/Adam/PycharmProjects/ReviewMania/RandomForest_model.sav'
+
+        loaded_model = pickle.load(open(filename, 'rb'))
+
+        result = loaded_model.predict(output)
+        print(result)
 
         return render_template('output.html', reviews=output)
 
@@ -70,3 +72,24 @@ def submit():
 
 if __name__ == '__main__':
     app.run()
+
+
+# REVERSE_MAPPING={}
+# for key,val in MAPPING.items():
+#     REVERSE_MAPPING[val]=key
+#
+#
+# class Python_3_Unpickler(pickle.Unpickler):
+#     """Class for pickling objects from Python 3"""
+#     def find_class(self,module,name):
+#         if module in REVERSE_MAPPING:
+#             module=REVERSE_MAPPING[module]
+#         __import__(module)
+#         mod = sys.modules[module]
+#         klass = getattr(mod, name)
+#         return klass
+#
+#
+# def loads(str):
+#     file = pickle.StringIO(str)
+#     return Python_3_Unpickler(file).load()
