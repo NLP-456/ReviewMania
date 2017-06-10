@@ -6,7 +6,7 @@ from selenium.common.exceptions import WebDriverException
 import pickle
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
-# from lib2to3.fixes.fix_imports import MAPPING
+
 
 app = Flask(__name__)
 
@@ -73,8 +73,16 @@ def submit():
 
         # result = loaded_model.predict(output)
         print(result)
+        i = 0
+        new_output = []
+        for the_text in output:
+            if result[i] == 0:
+                new_output.append("Negative - " + the_text)
+            else:
+                new_output.append("Positive - " + the_text)
+            i += 1
 
-        return render_template('output.html', reviews=output)
+        return render_template('output.html', reviews=new_output)
 
 # Static file rendering.
 # for testing static files
